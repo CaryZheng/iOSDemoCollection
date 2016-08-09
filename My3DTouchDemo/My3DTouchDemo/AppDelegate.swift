@@ -41,6 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        
+        let type = shortcutItem.type
+        if "com.mycompany.myapp.item1" ==  type {
+            print("item1 selected")
+        } else if "com.mycompany.myapp.item2" == type {
+            print("item2 selected")
+        }
+    }
 
 }
 
