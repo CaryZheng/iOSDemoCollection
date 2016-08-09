@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func handleDynamicQuickActions() {
+        if 0 == UIApplication.sharedApplication().shortcutItems?.count {
+            let newItem = UIApplicationShortcutItem(type: "com.mycompany.myapp.item3", localizedTitle: "dynamic标签3")
+            UIApplication.sharedApplication().shortcutItems?.append(newItem)
+        }
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        handleDynamicQuickActions()
+        
         return true
     }
 
@@ -48,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("item1 selected")
         } else if "com.mycompany.myapp.item2" == type {
             print("item2 selected")
+        } else if "com.mycompany.myapp.item3" == type {
+            print("item3 selected")
         }
     }
 
