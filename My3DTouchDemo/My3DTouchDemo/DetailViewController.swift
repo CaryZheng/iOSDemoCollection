@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
             print("Action 1 selected")
         }
         
-        let action2 = UIPreviewAction(title: "action 2", style: .Destructive) { (action, viewController) -> Void in
+        let action2 = UIPreviewAction(title: "Action 2", style: .Destructive) { (action, viewController) -> Void in
             print("Action 2 selected")
         }
         
