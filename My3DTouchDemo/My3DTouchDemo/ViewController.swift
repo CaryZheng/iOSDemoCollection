@@ -8,11 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIViewControllerPreviewingDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Add test button
+        let btn = UIButton(type: .System)
+        btn.setTitle("Peek & Pop Test: click me", forState: .Normal)
+        btn.sizeToFit()
+        btn.backgroundColor = UIColor.yellowColor()
+        btn.center = self.view.center
+
+        self.view.addSubview(btn)
+        
+        // register preview
+        if .Available == traitCollection.forceTouchCapability {
+            registerForPreviewingWithDelegate(self, sourceView: btn)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +34,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        return DetailViewController()
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        showViewController(viewControllerToCommit, sender: self)
+    }
+    
 }
 
